@@ -25,7 +25,7 @@ namespace SistemaInventarioBiblioteca
                 switch (opcion)
                 {
                     case 1:
-                        //MostrarInventario();
+                        MostrarInventario();
                         break;
                     case 0:
                         Console.WriteLine("Saliendo del programa...");
@@ -54,5 +54,29 @@ namespace SistemaInventarioBiblioteca
             Console.WriteLine("0. Salir\n");
 
         }
-    }
+
+        // ---------------------------------------------------------
+        // 1. Mosrtrar inventario completo
+        // Complejidad: O(n * m) -- Para desplegar todos los elementos del inventario,
+        // se recorre cada libro (n) y cada sucursal (m) para mostrar la cantidad disponible.
+        // 3 x 5 = 15 elementos en total, lo que es igual a n * m.
+        // ---------------------------------------------------------
+        static void MostrarInventario()
+        {
+            Console.Clear();
+            Console.WriteLine("====== INVENTARIO COMPLETO ======\n");
+            Console.WriteLine("Libro\tCentro\tNorte \tSur");
+            for (int i = 0; i < inventario.GetLength(0); i++)
+            {
+                Console.Write($"Libro {i + 1}\t");
+                for (int j = 0; j < inventario.GetLength(1); j++)
+                {
+                    Console.Write($"{inventario[i, j]}\t");
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine("\nPuedes presionar cualquier tecla para continuar :)");
+            Console.ReadKey();
+        }
+}
 }
